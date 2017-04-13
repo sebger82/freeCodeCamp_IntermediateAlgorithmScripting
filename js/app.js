@@ -67,3 +67,24 @@ function translatePigLatin(str) {
 
 translatePigLatin("consonant");
 translatePigLatin("california");
+
+// The DNA strand is missing the pairing element. Take each character, get its pair, and return the results as a 2d array. Base pairs are a pair of AT and CG. Match the missing element to the provided character. Return the provided character as the first element in each array.
+
+function pairElement(str) {
+  var tab = str.split('');
+  
+  for (var i =0; i < tab.length; i++) {
+    if (tab[i] == 'A') {
+      tab[i] = ['A','T'];
+    } else if (tab[i] == 'T') {
+      tab[i] = ['T','A'];
+    } else if (tab[i] == 'G') {
+      tab[i] = ['G','C'];
+    } else {
+      tab[i] = ['C','G'];
+    }
+  }
+  return tab;
+}
+
+pairElement("CTCTA"); // should return [["C","G"],["T","A"],["C","G"],["T","A"],["A","T"]]
