@@ -44,3 +44,26 @@ function myReplace(str, before, after) {
 
 myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
 myReplace("Let us get back to more Coding", "Coding", "algorithms");
+
+// Translate the provided string to pig latin. Pig Latin takes the first consonant (or consonant cluster) of an English word, moves it to the end of the word and suffixes an "ay". If a word begins with a vowel you just add "way" to the end.
+
+function translatePigLatin(str) {
+  var tab = str.split('');
+  if (tab[0] == 'a' || tab[0] =='e' || tab[0] =='o' || tab[0] == 'i' || tab[0] =='u' || tab[0] == 'y') {
+  var endOfWord = 'way';
+  tab.push(endOfWord);
+  return tab.join('');
+  } else {
+ var firstOfWord = '';
+    do {
+        firstOfWord += tab.shift();
+    }
+    while (tab[0] != 'a' && tab[0] !='e' && tab[0] !='o' && tab[0] != 'i' && tab[0] !='u' && tab[0] != 'y');
+  var endClassic = 'ay';
+  tab.push(firstOfWord,endClassic);
+  return tab.join('');
+  }
+}
+
+translatePigLatin("consonant");
+translatePigLatin("california");
