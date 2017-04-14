@@ -88,3 +88,11 @@ function pairElement(str) {
 }
 
 pairElement("CTCTA"); // should return [["C","G"],["T","A"],["C","G"],["T","A"],["A","T"]]
+
+// Check if a value is classified as a boolean primitive. Return true or false.
+
+function booWho(bool) {
+return typeof bool == 'boolean';
+}
+
+booWho(null);
