@@ -96,3 +96,25 @@ return typeof bool == 'boolean';
 }
 
 booWho(null);
+
+// Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+
+function uniteUnique(arr) {
+
+    var newArray = [];
+
+    for (var i = 0; i < arguments.length; i++) {
+        var arrayFromArguments = arguments[i];
+
+        for (var j = 0; j < arrayFromArguments.length; j++) {
+            var indexValue = arrayFromArguments[j];
+            if (newArray.indexOf(indexValue) < 0) {
+                newArray.push(indexValue);
+            }
+        }
+    }
+
+    return newArray;
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
