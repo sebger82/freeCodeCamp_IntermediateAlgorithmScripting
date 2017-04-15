@@ -81,6 +81,56 @@ convertToRoman(36000);
 convertToRoman(83);
 convertToRoman(-1);
 
+// Convert the given number into a roman numeral. REKURENCYJNIE Z OBIEKTEM
+
+function convertToRoman(num) {
+ 
+  var romanArabic = maxNumbersLowerThanArabic(num);
+  var roman = Object.keys(romanArabic)[0];    
+  var arabic = romanArabic[roman];
+
+  var nextNum = num - arabic;
+  
+  if (nextNum === 0) {
+    return roman;
+  } else {
+    return roman + convertToRoman(nextNum);
+  }
+}
+
+function maxNumbersLowerThanArabic(num) {
+  
+  var numbers = {'M' : 1000, 
+                 "CM" : 900,
+                 "D":500,
+                 "CD": 400,
+                 "C" : 100,
+                 "XC" : 90,
+                 "L": 50,
+                 "XL":40,
+                 "X":10,
+                 "IX":9,
+                 "V":5,
+                 "IV":4,
+                 "I":1};
+
+  
+  for (var roman in numbers) {
+    if (numbers[roman] <= num) {
+      var result = {};
+      result[roman] = numbers[roman];
+      return result;
+    }
+  }
+  
+  return "invalid parameter";
+  
+}
+convertToRoman(-1);
+convertToRoman(36000);
+convertToRoman(83);
+convertToRoman(798);
+
 // Perform a search and replace on the sentence using the arguments provided and return the new sentence. NOTE: Preserve the case of the original word when you are replacing it. For example if you mean to replace the word "Book" with the word "dog", it should be replaced as "Dog"
 
 function myReplace(str, before, after) {
