@@ -187,6 +187,19 @@ function pairElement(str) {
 
 pairElement("CTCTA"); // should return [["C","G"],["T","A"],["C","G"],["T","A"],["A","T"]]
 
+// Find the missing letter in the passed letter range and return it. If all letters are present in the range, return undefined.
+
+function fearNotLetter(str) {
+  for (var i = 0; i < str.length; i++) {
+    if (str.charCodeAt(i) > str.charCodeAt(0) + i ) {
+      return String.fromCharCode(str.charCodeAt(i) - 1);
+    }  
+  }
+  return undefined;
+}
+
+fearNotLetter("abce");
+
 // Check if a value is classified as a boolean primitive. Return true or false.
 
 function booWho(bool) {
