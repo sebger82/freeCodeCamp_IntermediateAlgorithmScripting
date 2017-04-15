@@ -33,6 +33,29 @@ function diffArray(arr1, arr2) {
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 diffArray([1, "calf", 3, "piglet"], [7, "filly"]);
 
+// Convert the given number into a roman numeral.
+
+function convertToRoman(num) {
+
+  var arabicNumeral = [ 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 ];
+  var romanNumeral = [ 'M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I' ];
+
+  var string = '';
+
+  for (var i = 0; i < arabicNumeral.length; i++) {
+    while (arabicNumeral[i] <= num) {
+      string += romanNumeral[i];
+      num -= arabicNumeral[i];
+    }
+  }
+
+  return string;
+}
+
+convertToRoman(36);
+convertToRoman(36000);
+convertToRoman(83);
+convertToRoman(798);
 // Perform a search and replace on the sentence using the arguments provided and return the new sentence. NOTE: Preserve the case of the original word when you are replacing it. For example if you mean to replace the word "Book" with the word "dog", it should be replaced as "Dog"
 
 function myReplace(str, before, after) {
