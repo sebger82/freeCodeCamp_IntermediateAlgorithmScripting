@@ -245,3 +245,31 @@ function convertHTML(str) {
 convertHTML("Dolce & Gabbana");
 convertHTML("Hamburgers < Pizza < Tacos");
 convertHTML('Stuff in "quotation marks"');
+
+// Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
+
+function spinalCase(str) {
+  var spaces = /\s+|_+/g;
+  var replacedString = str.replace(/([a-z])([A-Z])/g, '$1 $2');
+  return replacedString.replace(spaces, '-').toLowerCase();
+}
+
+spinalCase('This Is Spinal Tap');
+spinalCase("AllThe-small Things");
+
+// Sum All Odd Fibonacci Numbers
+
+function sumFibs(num) {
+    var startNumber = 0;
+    var currentNumber = 1;
+    var result = 0;
+    while (currentNumber <= num) {
+        if (currentNumber % 2 !== 0) {
+            result += currentNumber;
+        }
+        currentNumber += startNumber;
+        startNumber = currentNumber - startNumber;
+    }
+    return result;
+}
+sumFibs(4);
