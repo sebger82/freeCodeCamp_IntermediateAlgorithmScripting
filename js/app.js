@@ -273,3 +273,27 @@ function sumFibs(num) {
     return result;
 }
 sumFibs(4);
+
+// Sum All Primes
+
+function sumPrimes(num) {
+  function checkPrime(x){
+      for (i = 2; i <= (x^(1/2)); i++){ //wieksze wartosci niz pierwiastek z liczby nie moga byc jej dzielnikami 
+          if(x % i === 0 && x != i){
+             return false;
+          }
+       }
+      return true;
+  }
+  if (num === 1){
+    return 0;
+  }
+  if(checkPrime(num) === false){
+    return sumPrimes(num - 1);
+  }
+  if(checkPrime(num) === true){
+    return num + sumPrimes(num - 1);
+  }
+}
+
+sumPrimes(10);
