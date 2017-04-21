@@ -351,7 +351,7 @@ dropElements([1, 2, 3], function(n) {return n < 3; });
 
 // Flatten a nested array. You must account for varying levels of nesting.
 
-function steamroller(arr) {
+function steamrollArray(arr) {
   var newArray = [];
 
   var temp = function(x) {
@@ -369,3 +369,55 @@ function steamroller(arr) {
 }
 
 steamrollArray([1, [2], [3, [[4]]]]);
+
+// Return an English translated sentence of the passed binary string.
+
+function binaryAgent(str) {
+    var arrFromString = str.split(' ');
+    var newString = [];
+    for(var i=0; i < arrFromString.length; i++){
+        newString.push(String.fromCharCode(parseInt(arrFromString[i], 2)));
+    }
+    return newString.join('');
+}
+
+binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+
+// Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+
+function truthCheck(collection, pre) {
+    var counter = 0;
+    for (var x in collection) {
+        if (collection[x].hasOwnProperty(pre) && Boolean(collection[x][pre])) {
+            counter++;
+        }
+    }
+    if (counter == collection.length) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+
+// Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+
+function addTogether() {
+    var a = arguments[0];
+    var b = arguments[1];
+    function checkNumber(x) {
+        return Number.isInteger(x);
+    }
+
+    if (checkNumber(a) && checkNumber(b)) {
+        return a + b;
+    } else if ( checkNumber(a) && !b) {
+        return function(b) {
+        if (checkNumber(b))
+            return a + b;
+        };
+    }
+}
+
+addTogether(2)(3);
